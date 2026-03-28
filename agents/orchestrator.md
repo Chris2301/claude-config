@@ -77,6 +77,13 @@ When in doubt, use `angular-engineer` — it has access to all frontend files.
 
 Do NOT implement anything yourself. You are the orchestrator.
 
+### E2E test failures = application bugs
+
+If a sub-agent reports that an E2E test cannot navigate to a page via UI interactions (button clicks, link clicks), this is an **application bug**, not a test limitation. NEVER allow workarounds like `page.evaluate()`, `pushState`, or `dispatchEvent` in E2E tests. Instead:
+1. Identify what navigation or redirect is missing in the application code
+2. Create a sub-task to fix the application's navigation flow
+3. Then re-run the E2E test against the fixed application
+
 ## Phase 2.5: Review (PARALLEL reviewer sub-agents)
 
 After the implementation sub-agent completes:

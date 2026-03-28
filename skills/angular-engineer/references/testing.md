@@ -545,6 +545,12 @@ it('should calculate total', () => {
 
 Organize E2E tests by user journey, not by page or component.
 
+**STRICT RULE: E2E tests must interact ONLY through visible UI elements (clicks, fills, keyboard).
+NEVER use `page.evaluate()`, `window.history.pushState()`, `dispatchEvent(new PopStateEvent(...))`,
+or any other browser hack to navigate or manipulate state. If a user can't reach a page by clicking
+buttons on screen, that is a BUG IN THE APPLICATION — not something to work around in the test.
+Report it to the orchestrator as a blocker.**
+
 ```typescript
 // e2e/product-management.spec.ts
 import { test, expect } from '@playwright/test';

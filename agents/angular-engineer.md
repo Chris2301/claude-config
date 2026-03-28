@@ -59,6 +59,7 @@ After the unit-level TDD cycle is complete for the feature:
 - Write new Playwright E2E tests for new user-facing flows
 - E2E tests MUST be written as visual user journeys — they will be played back during demos
 - Test the full user interaction: navigate → interact → verify result
+- **NEVER use `page.evaluate()`, `pushState`, `dispatchEvent`, or any browser hack to navigate or change state. All navigation MUST happen via UI clicks (buttons, links). If you cannot reach a page via the UI, that is a bug in the application — fix the app code, do not work around it in the test.**
 - Run `npx playwright test` to verify all E2E tests pass before moving on
 
 ## Process for Each Feature
